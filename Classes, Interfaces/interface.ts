@@ -5,15 +5,15 @@ interface IPet{
     info(): void
 }
 
-interface IKitty{
+interface IKitty extends IPet{
     meow():void
 }
 
-interface IDoggy{
+interface IDoggy extends IPet{
     woof():void
 }
 
-class Cat implements IPet, IKitty{
+class Cat implements IKitty{
     color="White-cream"
     name="Belka"
     age= 0.5
@@ -25,7 +25,7 @@ class Cat implements IPet, IKitty{
     }
 }
 
-class Dog implements IPet, IDoggy{
+class Dog implements IDoggy{
     color="Black"
     name="Barry"
     age= 8
