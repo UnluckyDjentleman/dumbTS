@@ -52,13 +52,13 @@ class King extends Figure{
 class Queen extends Figure{
     canMakeAStep(position: Positioning){
         let dist=this.pos.distanceFrom(position);
-        return (dist.hor<8||dist.vert<8)&&(dist.hor==dist.vert)
+        return (dist.hor<8||dist.vert<8)&&(dist.hor===dist.vert)
     }
 }
 class Bishop extends Figure{
     canMakeAStep(position: Positioning){
         let dist=this.pos.distanceFrom(position);
-        return dist.hor<8&&dist.vert<8&&(dist.hor==dist.vert)
+        return dist.hor<8&&dist.vert<8&&(dist.hor===dist.vert)
     }
 }
 class Knight extends Figure{
@@ -70,7 +70,7 @@ class Knight extends Figure{
 class Rook extends Figure{
     canMakeAStep(position: Positioning){
         let dist=this.pos.distanceFrom(position);
-        return dist.hor<8&&dist.vert<8&&dist.hor!==dist.vert
+        return (dist.hor<8&&dist.vert===0)||(dist.hor===0&&dist.vert<8)
     }
 }
 class Pawn extends Figure{
@@ -128,11 +128,3 @@ class Play{
         ]
     }
 }
-
-let chess:(King|Queen|Bishop|Pawn|Knight|Rook)[]=new Play().figures;
-let step1:Positioning=new Positioning(3,'B');
-let pawn1:(King|Queen|Bishop|Pawn|Knight|Rook)=chess.find(elem=>elem.canMakeAStep(step1)&&elem.getColor()==='White');
-pawn1.makeAStep(step1);
-let step2:Positioning=new Positioning(6,'C');
-let pawn2:(King|Queen|Bishop|Pawn|Knight|Rook)=chess.find(elem=>elem.canMakeAStep(step2)&&elem.getColor()==='Red');
-pawn1.makeAStep(step2);

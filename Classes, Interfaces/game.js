@@ -68,7 +68,7 @@ var Queen = /** @class */ (function (_super) {
     }
     Queen.prototype.canMakeAStep = function (position) {
         var dist = this.pos.distanceFrom(position);
-        return (dist.hor < 8 || dist.vert < 8) && (dist.hor == dist.vert);
+        return (dist.hor < 8 || dist.vert < 8) && (dist.hor === dist.vert);
     };
     return Queen;
 }(Figure));
@@ -79,7 +79,7 @@ var Bishop = /** @class */ (function (_super) {
     }
     Bishop.prototype.canMakeAStep = function (position) {
         var dist = this.pos.distanceFrom(position);
-        return dist.hor < 8 && dist.vert < 8 && (dist.hor == dist.vert);
+        return dist.hor < 8 && dist.vert < 8 && (dist.hor === dist.vert);
     };
     return Bishop;
 }(Figure));
@@ -101,7 +101,7 @@ var Rook = /** @class */ (function (_super) {
     }
     Rook.prototype.canMakeAStep = function (position) {
         var dist = this.pos.distanceFrom(position);
-        return dist.hor < 8 && dist.vert < 8 && dist.hor !== dist.vert;
+        return (dist.hor < 8 && dist.vert === 0) || (dist.hor === 0 && dist.vert < 8);
     };
     return Rook;
 }(Figure));
@@ -162,8 +162,8 @@ var Play = /** @class */ (function () {
 }());
 var chess = new Play().figures;
 var step1 = new Positioning(3, 'B');
-var pawn1 = chess.find(function (elem) { return elem.canMakeAStep(step1) && elem.getColor() === 'White'; });
+var pawn1 = chess.find(function (elem) { return elem.canMakeAStep(step1) && elem.getColor() !== 'White'; });
 pawn1.makeAStep(step1);
 var step2 = new Positioning(6, 'C');
-var pawn2 = chess.find(function (elem) { return elem.canMakeAStep(step2) && elem.getColor() === 'Red'; });
+var pawn2 = chess.find(function (elem) { return elem.canMakeAStep(step2) && elem.getColor() !== 'Red'; });
 pawn1.makeAStep(step2);
