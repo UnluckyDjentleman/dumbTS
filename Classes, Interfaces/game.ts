@@ -6,12 +6,18 @@ class Positioning{
     constructor(
         private vert: Vert,
         private hor: Hor
-    ){}
+    ){
+        this.vert=vert
+        this.hor=hor
+    }
     distanceFrom(position: Positioning){
         return{
             vert: Math.abs(position.vert-this.vert),
             hor: Math.abs(position.hor.charCodeAt(0)-this.hor.charCodeAt(0))
         }
+    }
+    getVerHor():string{
+        return this.hor.toString()+this.vert.toString()
     }
 }
 
@@ -25,9 +31,13 @@ abstract class Figure{
         this.pos=new Positioning(vert,hor);
     }
     makeAStep(position: Positioning){
+        console.log(this.color+' made a step from '+this.pos.getVerHor()+' to '+position.getVerHor());
         this.pos=position
     }
     abstract canMakeAStep(position: Positioning):boolean
+    getPosition():Positioning{
+        return this.pos;
+    }
 }
 
 class King extends Figure{
@@ -68,7 +78,7 @@ class Pawn extends Figure{
 }
 
 class Play{
-    private figures=Play.createGame();
+    public figures=Play.createGame();
 
     private static createGame(){
         return[
@@ -116,4 +126,7 @@ class Play{
     }
 }
 
-let playTheGame
+let chess:(King|Queen|Bishop|Pawn|Knight|Rook)[]=new Play().figures;
+let step1:Positioning=new Positioning(3,'B');
+let pawn1:(King|Queen|Bishop|Pawn|Knight|Rook)=chess.find(elem=>elem.canMakeAStep(step1));
+pawn1.makeAStep(step1);
