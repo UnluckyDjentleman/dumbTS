@@ -42,3 +42,7 @@ let belka:Cat=new Cat();
 belka.info();
 belka.meow();
 
+let barry:Dog=new Dog();
+barry.info();
+barry.woof();
+
