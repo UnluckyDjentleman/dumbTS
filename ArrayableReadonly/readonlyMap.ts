@@ -1,0 +1,1 @@
+let dictionary:ReadonlyMap<number,string>=new Map([[1,"Part 1. History of TypeScript"]]); 
