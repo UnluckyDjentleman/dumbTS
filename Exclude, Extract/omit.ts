@@ -6,5 +6,5 @@ type Character={
     levelToUnlock: number
 }
 
-type PlayableCharacter=Omit<Character, 'isLocked'>
+type PlayableCharacter=Omit<Character, 'levelToUnlock'>
 //type PlayableCharacter={name:string, element:Element}
