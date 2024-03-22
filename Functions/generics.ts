@@ -30,7 +30,7 @@ let filter: Filter<any>=(array,f)=>{
     return result;
 }
 
-let result=filter(gamers, _=>_.nickname.startsWith('l'));
+let result=filter(gamers, gamer=>gamer.nickname.startsWith('l'));
 
 console.log(result[0].nickname)
 

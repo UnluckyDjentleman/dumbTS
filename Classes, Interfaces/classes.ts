@@ -6,7 +6,6 @@ abstract class Animal{
     }
 }
 
-//This string returns ERROR! We cannot create an object of abstract class
 //let animal:Animal=new Animal("Belka");
 
 class Bird extends Animal{
@@ -54,9 +53,6 @@ class Parrot extends Bird{
             return text
         }
     }
-    /*set setName(name:string){
-        return this.name=name;
-    }*/
     getType(): string {
         return "parrot";
     }
